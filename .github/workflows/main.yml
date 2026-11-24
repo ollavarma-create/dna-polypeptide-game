@@ -15,10 +15,10 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Check out the repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
         with:
           python-version: '3.12'
 
@@ -38,14 +38,14 @@ jobs:
         run: python -m nuitka dnaencoder_GUI.py --standalone --onefile --follow-imports --enable-plugin=pyside6 --output-dir=build --windows-console-mode=disable --assume-yes-for-downloads --output-filename=DNAtoPolypeptideMessageEncoder.exe
 
       - name: Upload EXE as artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: DNAtoPolypeptideMessageEncoder-Windows
           path: build/DNAtoPolypeptideMessageEncoder.exe
 
       - name: Upload to GitHub Release
         if: github.event_name == 'release'
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@3bb12739c298aeb8a4eeaf626c5b8d85266b0e65 # v2
         with:
           files: build/DNAtoPolypeptideMessageEncoder.exe
 
@@ -53,10 +53,10 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Check out the repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
         with:
           python-version: '3.12'
 
@@ -121,13 +121,13 @@ jobs:
           ./appimagetool-x86_64.AppImage AppDir DNAtoPolypeptideMessageEncoder-x86_64.AppImage
 
       - name: Upload AppImage as artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: DNAtoPolypeptideMessageEncoder-Linux
           path: DNAtoPolypeptideMessageEncoder-x86_64.AppImage
 
       - name: Upload to GitHub Release
         if: github.event_name == 'release'
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@3bb12739c298aeb8a4eeaf626c5b8d85266b0e65 # v2
         with:
           files: DNAtoPolypeptideMessageEncoder-x86_64.AppImage
